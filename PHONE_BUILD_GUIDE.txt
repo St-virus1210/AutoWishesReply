@@ -1,0 +1,46 @@
+AUTO WISHES REPLY — BUILD ON YOUR LAVA AGNI 2 5G
+
+WHAT IS IN THIS PACKAGE?
+1) AutoWishesReply_Source.zip = Android source code (not an APK)
+2) android-apk.yml = GitHub Actions workflow text
+
+PART A — CREATE A GITHUB REPOSITORY
+1. On your phone, open Chrome and sign in at https://github.com
+2. Tap + (top/right) > New repository.
+3. Repository name: AutoWishesReply
+4. Choose Private (recommended), then tap Create repository.
+
+PART B — UPLOAD THE SOURCE ZIP
+1. In the new repository, tap Add file > Upload files.
+2. Select the file AutoWishesReply_Source.zip from Downloads (extract this outer package first).
+3. Tap Commit changes.
+
+PART C — ADD THE BUILD WORKFLOW
+1. Return to the repository home page.
+2. Tap Add file > Create new file.
+3. In the filename box, enter exactly:
+   .github/workflows/android-apk.yml
+4. Open android-apk.yml from this package in a text editor, copy all its text, and paste it into GitHub's editor.
+5. Tap Commit changes.
+
+PART D — RUN THE BUILD
+1. Open the repository's Actions tab.
+2. Select Build Auto Wishes Reply APK.
+3. Tap Run workflow > Run workflow.
+4. Wait for the run to finish with a green check mark. If it fails, open the run and share the error/log screenshot; do not guess at the cause.
+5. In the completed run, find Artifacts and tap AutoWishesReply-debug-apk to download it.
+6. Open the downloaded artifact ZIP in Files and extract it. It contains app-debug.apk.
+7. Tap app-debug.apk to install. If Android asks, allow Chrome/Files to install unknown apps for this installation, then install.
+
+PART E — ENABLE IT
+1. Open Auto Wishes Reply.
+2. Tap Open notification access settings and enable Auto Wishes Reply.
+3. Return to the app; switch Automatic replies ON.
+4. Keep WhatsApp notification previews enabled.
+5. Test first with a trusted contact sending a simple text such as "Happy Birthday".
+
+SAFETY / LIMITATIONS
+- The app reads WhatsApp and WhatsApp Business notification content locally to detect wishes. Notification access is sensitive; only enable it if you accept this.
+- Automatic inline reply is possible only when the notification provides a compatible Reply action. It will not work for every notification, media, sticker, voice note, or hidden preview.
+- A reply action being sent does not prove the message was delivered.
+- The APK is a debug build for personal testing, not a Play Store release.

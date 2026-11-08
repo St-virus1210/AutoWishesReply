@@ -1,0 +1,45 @@
+name: Build Auto Wishes Reply APK
+
+on:
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Java 17
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '17'
+
+      - name: Set up Android SDK
+        uses: android-actions/setup-android@v3
+
+      - name: Install Android SDK packages
+        run: sdkmanager "platform-tools" "platforms;android-35" "build-tools;35.0.0"
+
+      - name: Install Gradle 8.9
+        uses: gradle/actions/setup-gradle@v4
+        with:
+          gradle-version: '8.9'
+
+      - name: Extract Android source project
+        run: |
+          unzip -q AutoWishesReply_Source.zip -d awr-project
+          test -f awr-project/settings.gradle
+          test -f awr-project/app/build.gradle
+
+      - name: Build debug APK
+        working-directory: awr-project
+        run: gradle --no-daemon assembleDebug
+
+      - name: Upload APK artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: AutoWishesReply-debug-apk
+          path: awr-project/app/build/outputs/apk/debug/app-debug.apk
+          if-no-files-found: error
